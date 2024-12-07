@@ -1,33 +1,42 @@
 ---
 
 ---
-
 <script>
+
 /************
-Dynamic Data
+Static Data
 ************/
-// define `theClockApp` stored in function to be ran
-const theClockApp = () => {
-  
-  // Get and store current date and time with `new Date()` object
+const allTheMonths = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
+const allTheDays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+];
+
+
+function theClockApp() {
   const timeNow = new Date();
-  // Check-Check: See all `Date()` methods and properties
-  // console.log( timeNow );
-  
-  // Get current hours
   let gotHours = timeNow.getHours();
-  // Get current minutes
   let gotMinutes = timeNow.getMinutes();
-  // Get current seconds
   let gotSeconds = timeNow.getSeconds();
   
-  // Check-Check: Is the data correct? 
-  // console.log(gotHours, gotMinutes, gotSeconds);
-  
-  /************
-  Format Data
-  ************/
-  // Get AM or PM
   const gotAmOrPM = gotHours >= 12 ? 'PM' : 'AM';
   // Get 12 hour format
   gotHours = gotHours % 12 || 12;
@@ -50,9 +59,7 @@ const theClockApp = () => {
   // Get AM or PM
   const amOrPM = document.querySelector('.amOrPM');
   
-  /************
-  Set DOM Elements
-  ************/
+
   // Set the hours
   hours.textContent = gotHours;
   // Set the minutes
@@ -61,21 +68,25 @@ const theClockApp = () => {
   seconds.textContent = gotSeconds;
   // Set AM or PM
   amOrPM.textContent = gotAmOrPM;
-    
-  }
+}
   
-  /************
-  Run App
-  ************/
-  // Re-run `theClockApp` every 1 second (1000 ms)
-  setInterval(theClockApp, 1000);
+// Re-run `theClockApp` every 1 second (1000 ms)
+setInterval(theClockApp, 1000);
+
+const dateNow = new Date();
+const gotDayOfWeek = dateNow.getDay();
+const dayOfWeek = document.querySelector('.dayOfWeek');
+dayOfWeek.textContent = allTheDays[gotDayOfWeek];
 </script>
 
-<section class="time card glass">
-    <h1>Time</h1>
-    <time>
-      <data class="hours">HH</data> : <data class="minutes">MM</data> :
-      <data class="seconds">SS</data>
-      <data class="amOrPM">AM/PM</data>
-    </time>
-<section>
+<figure class="datetime rounded">
+    <p class="font-bold uppercase">Currently:</p>
+    <span>
+        <time>
+            <data class="dayOfWeek">SMTWTFS</data>
+        </time> - <time>
+            <data class="hours">HH</data>:<data class="minutes">MM</data>:<data class="seconds">SS</data>
+            <data class="amOrPM">AM/PM</data>
+        </time>
+    </span>
+</figure>

@@ -1,25 +1,16 @@
 ---
-// Base Layout
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-// Components
-import Date from '../components/Date.astro';
-import Time from '../components/Time.astro';
+import DateTime from "../components/DateTime.astro";
 import Weather from '../components/Weather.astro';
 import WebCam from '../components/WebCam.astro';
 
-// Your Styles
 import '../styles/global.css';
 ---
 
 <BaseLayout>
-
-	<Date />
-
-	<Time />
-	
-	<Weather />
-
 	<WebCam />
-	
+	<div class="bottom-stuff glass">
+		<DateTime />
+		<Weather />
+	</div>
 </BaseLayout>

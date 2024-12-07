@@ -1,23 +1,10 @@
-/* 
-section.date {
-    background:#6495edb0;
-}
-
-section.time {
-    background: #ffdab9b0;
-}
-
-section.weather {
-    background: aliceblue
-} */
-
 img.fallback {
     margin-left: auto;
     margin-right: auto;
 }
 
 img.fallback, video { 
-    /* Position video      */
+    /* Position video or image placeholder*/
     position: absolute;
     top: 0;
     left: 0;
@@ -29,4 +16,29 @@ img.fallback, video {
     /* fill background with video    */
     object-fit: cover;
     object-position: center;
+}
+
+.bottom-stuff {
+    position: fixed;
+    display: block;
+    bottom: 0px;
+    
+    width: 100vw;
+    height: 5em;
+    background-color: rgba(0, 0, 255, 0.6);
+}
+
+.bottom-stuff figure {
+    padding: 1em 2em 1em 2em;
+    display: inline-block;
+    height: 5em;
+    vertical-align: middle;
+}
+
+.datetime {
+    background-color: rgba(255, 166, 0, 0.58);
+}
+
+img.icon {
+    display: inline-block;
 }
