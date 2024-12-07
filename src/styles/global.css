@@ -1,0 +1,32 @@
+/* 
+section.date {
+    background:#6495edb0;
+}
+
+section.time {
+    background: #ffdab9b0;
+}
+
+section.weather {
+    background: aliceblue
+} */
+
+img.fallback {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img.fallback, video { 
+    /* Position video      */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Stretch to fill viewport */
+    width: 100vw;
+    height: 100vh;
+    /* stack behind content     */
+    z-index: -1;
+    /* fill background with video    */
+    object-fit: cover;
+    object-position: center;
+}
