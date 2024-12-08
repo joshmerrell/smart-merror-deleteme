@@ -14,6 +14,9 @@ if (navigator.mediaDevices.getUserMedia) {
 	.catch((error) => {
 		console.error(error);
 		img.classList.remove("hidden");
+	})
+	.then(() => {
+		document.querySelector("img.webcam-background").classList.add("hidden")
 	});
 }
 </script>
@@ -22,3 +25,4 @@ if (navigator.mediaDevices.getUserMedia) {
 <!-- Webcam Video -->
 <video autoplay></video>
 <img src="/fallback.png" class="fallback hidden" width="800" height="600" alt="">
+<img src="/local-weather.svg" class="webcam-background" alt="Local weather video background">
