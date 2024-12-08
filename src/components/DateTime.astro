@@ -7,86 +7,90 @@
 Static Data
 ************/
 const allTheMonths = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December"
 ];
 const allTheDays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
+	"Sunday",
+	"Monday",
+	"Tuesday",
+	"Wednesday",
+	"Thursday",
+	"Friday",
+	"Saturday"
 ];
 
 
 function theClockApp() {
-  const timeNow = new Date();
-  let gotHours = timeNow.getHours();
-  let gotMinutes = timeNow.getMinutes();
-  let gotSeconds = timeNow.getSeconds();
-  
-  const gotAmOrPM = gotHours >= 12 ? 'PM' : 'AM';
-  // Get 12 hour format
-  gotHours = gotHours % 12 || 12;
-  // Optionally, append zero to single digit hours
-  gotHours = gotHours < 10 ? `0${gotHours}` : gotHours;   
-  // Optionally, append zero to single digit minutes
-  gotMinutes = gotMinutes < 10 ? `0${gotMinutes}` : gotMinutes;
-  // Optionally, append zero to single digit seconds
-  gotSeconds = gotSeconds < 10 ? `0${gotSeconds}` : gotSeconds;
-  
-  /************
-  Get DOM Elements
-  ************/
-  // Get Hours
-  const hours = document.querySelector(".hours");
-  // Get minutes
-  const minutes = document.querySelector(".minutes");
-  // Get seconds
-  const seconds = document.querySelector(".seconds");
-  // Get AM or PM
-  const amOrPM = document.querySelector('.amOrPM');
-  
+	const timeNow = new Date();
+	let gotHours = timeNow.getHours();
+	let gotMinutes = timeNow.getMinutes();
+	let gotSeconds = timeNow.getSeconds();
 
-  // Set the hours
-  hours.textContent = gotHours;
-  // Set the minutes
-  minutes.textContent = gotMinutes;
-  // Set the seconds
-  seconds.textContent = gotSeconds;
-  // Set AM or PM
-  amOrPM.textContent = gotAmOrPM;
+	const gotAmOrPM = gotHours >= 12 ? 'PM' : 'AM';
+	// Get 12 hour format
+	gotHours = gotHours % 12 || 12;
+	// Optionally, append zero to single digit hours
+	gotHours = gotHours < 10 ? `0${gotHours}` : gotHours;   
+	// Optionally, append zero to single digit minutes
+	gotMinutes = gotMinutes < 10 ? `0${gotMinutes}` : gotMinutes;
+	// Optionally, append zero to single digit seconds
+	gotSeconds = gotSeconds < 10 ? `0${gotSeconds}` : gotSeconds;
+
+	/************
+	Get DOM Elements
+	************/
+	// Get Hours
+	const hours = document.querySelector(".hours");
+	// Get minutes
+	const minutes = document.querySelector(".minutes");
+	// Get seconds
+	const seconds = document.querySelector(".seconds");
+	// Get AM or PM
+	const amOrPM = document.querySelector('.amOrPM');
+
+
+	// Set the hours
+	hours.textContent = gotHours;
+	// Set the minutes
+	minutes.textContent = gotMinutes;
+	// Set the seconds
+	seconds.textContent = gotSeconds;
+	// Set AM or PM
+	amOrPM.textContent = gotAmOrPM;
 }
-  
+	
 // Re-run `theClockApp` every 1 second (1000 ms)
 setInterval(theClockApp, 1000);
 
 const dateNow = new Date();
 const gotDayOfWeek = dateNow.getDay();
-const dayOfWeek = document.querySelector('.dayOfWeek');
-dayOfWeek.textContent = allTheDays[gotDayOfWeek];
+const month = allTheMonths[dateNow.getMonth()];
+document.querySelector(".dayOfWeek").textContent = allTheDays[gotDayOfWeek];
+document.querySelector(".month").textContent = month;
+document.querySelector(".dayOfMonth").textContent = dateNow.getDay();
+document.querySelector(".year").textContent = dateNow.getFullYear();
 </script>
 
 <figure class="datetime rounded glass">
-    <p class="font-bold uppercase">Currently:</p>
-    <span>
-        <time>
-            <data class="dayOfWeek">SMTWTFS</data>
-        </time> - <time>
-            <data class="hours">HH</data>:<data class="minutes">MM</data>:<data class="seconds">SS</data>
-            <data class="amOrPM">AM/PM</data>
-        </time>
-    </span>
+	<p class="font-bold uppercase">Currently:</p>
+	<p>
+		<time>
+			<data class="dayOfWeek">SMTWTFS</data>
+			<data class="month">Month</data> <data class="dayOfMonth"></data> <data class="year"></data>
+		</time> - <time>
+			<data class="hours">HH</data>:<data class="minutes">MM</data>:<data class="seconds">SS</data>
+			<data class="amOrPM">AM/PM</data>
+		</time>
+	</p>
 </figure>
