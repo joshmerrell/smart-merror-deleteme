@@ -5,18 +5,16 @@
 <!-- Weather -->
 <figure class="weather rounded glass">
 	<p class="font-bold uppercase">
-		Weather in <data class="city">City</data>:
-	</p>
-	<span>
-		<data class="temp">Temp</data> F
-		<img
+		Weather in <data class="city">City</data> <img
 			class="icon"
 			width="50"
 			height="50"
 			src="/storm.png"
 			alt="Placeholder"
 		/>
-	</span>
+	</p>
+	<data class="temp">Temp</data> F
+	Humidity: <data class="humidity">???</data>
 </figure>
 
 <script>
@@ -35,6 +33,7 @@
 	const city = document.querySelector(".city");
 	const temp = document.querySelector(".temp");
 	const icon = document.querySelector(".icon");
+	const humidity = document.querySelector(".humidity")
 
 	// Using fetch to get data
 	fetch(url)
@@ -43,6 +42,7 @@
 			console.log(data);
 			city.textContent = data.name;
 			temp.textContent = data.main.temp;
+			humidity.textContent = `${data.main.humidity}%`;
 			icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
 			icon.setAttribute("alt", data.weather[0].main);
 			icon.setAttribute("title", data.weather[0].main);
