@@ -1,51 +1,50 @@
 ---
+
 ---
-
-<script>
-// Get API key from server side .ENV file
-const APIKEY = import.meta.env.PUBLIC_WEATHER_API;
-
-// API endpoint URL
-const queryEndpoint = 'https://api.openweathermap.org/data/2.5/weather';
-// City
-const queryCity = import.meta.env.PUBLIC_WEATHER_CITY ?? "Spokane";
-// Units for Farenheit
-const queryUnits = 'imperial';
-
-// URL query string
-const url = `${queryEndpoint}?q=${queryCity}&appid=${APIKEY}&units=${queryUnits}`;
-
-// Get DOM Elements
-const city = document.querySelector('.city');
-const temp = document.querySelector('.temp');
-const icon = document.querySelector('.icon');
-
-// Using fetch to get data
-fetch(url)
-.then( response => response.json() )
-.then( data => {
-
-  // Check-check: Is data good? 
-  console.log( data );
-  
-  // Get Container for Weather   
-  const weatherContainer = document.querySelector('.weather');
-    
-    // Set DOM Elements
-    city.textContent = data.name; 
-    temp.textContent = data.main.temp;
-
-    icon.setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
-  
-});
-</script>
-
 
 <!-- Weather -->
 <figure class="weather rounded">
-  <p class="font-bold uppercase">Weather in <data class="city">City</data>:</p>
-  <span>
-    <data class="temp">Temp</data> F
-    <img class="icon"  width="50" height="50" src="/storm-placeholder.png" alt="Placeholder">
-  </span>
+	<p class="font-bold uppercase">
+		Weather in <data class="city">City</data>:
+	</p>
+	<span>
+		<data class="temp">Temp</data> F
+		<img
+			class="icon"
+			width="50"
+			height="50"
+			src="/storm-placeholder.png"
+			alt="Placeholder"
+		/>
+	</span>
 </figure>
+
+<script>
+	// Get API key from server side .ENV file
+	const APIKEY = import.meta.env.PUBLIC_WEATHER_API;
+
+	// API endpoint URL
+	const queryEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+	const queryCity = import.meta.env.PUBLIC_WEATHER_CITY ?? "Spokane";
+	const queryUnits = "imperial";
+
+	// URL query string
+	const url = `${queryEndpoint}?q=${queryCity}&appid=${APIKEY}&units=${queryUnits}`;
+
+	// Get DOM Elements
+	const city = document.querySelector(".city");
+	const temp = document.querySelector(".temp");
+	const icon = document.querySelector(".icon");
+
+	// Using fetch to get data
+	fetch(url)
+		.then((response) => response.json())
+		.then((data) => {
+			console.log(data);
+			city.textContent = data.name;
+			temp.textContent = data.main.temp;
+			icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+			icon.setAttribute("alt", data.weather[0].main);
+			icon.setAttribute("title", data.weather[0].main);
+		});
+</script>

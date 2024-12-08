@@ -24,12 +24,11 @@ img.fallback, video {
     bottom: 0px;
     
     width: 100vw;
-    height: 5em;
     background-color: rgba(0, 0, 255, 0.6);
 }
 
 .bottom-stuff figure {
-    padding: 1em 2em 1em 2em;
+    padding: 0.5em 1em;
     display: inline-block;
     height: 5em;
     vertical-align: middle;
@@ -41,4 +40,5 @@ img.fallback, video {
 
 img.icon {
     display: inline-block;
+    padding: 0.5em;
 }
