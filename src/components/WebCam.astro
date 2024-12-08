@@ -1,13 +1,9 @@
 ---
 ---
 <script>
-    // Check-check: webcam.js file is loaded
-// console.log('Web Cam');
-
-// Get Video
 const video = document.querySelector("video");
+const img = document.querySelector("img.fallback");
 
-// Navigator object
 if (navigator.mediaDevices.getUserMedia) {
   
   navigator.mediaDevices
@@ -15,11 +11,14 @@ if (navigator.mediaDevices.getUserMedia) {
 	  video: true
 	})
 	.then((stream) => (video.srcObject = stream))
-	.catch((error) => console.log(error));
+	.catch((error) => {
+		console.error(error);
+		img.classList.remove("hidden");
+	});
 }
 </script>
 
 
 <!-- Webcam Video -->
 <video autoplay></video>
-<img src="/fallback.png" class="fallback" width="800" height="600" alt="">
+<img src="/fallback.png" class="fallback hidden" width="800" height="600" alt="">
